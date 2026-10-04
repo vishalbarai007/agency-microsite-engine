@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Rule: Accessibility - Agency Microsite Engine</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #34d399;
+      --code-bg: #030712;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+      padding: 0 1rem 4rem;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    header { padding: 2.5rem 0 1.5rem; border-bottom: 1px solid var(--card-border); margin-bottom: 2rem; }
+    .nav-back { display: inline-flex; align-items: center; gap: 0.5rem; color: #38bdf8; text-decoration: none; font-size: 0.875rem; margin-bottom: 1rem; }
+    h1 { font-size: 2.2rem; font-weight: 800; background: linear-gradient(to right, #fff, #a7f3d0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+    .layman-box { background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(52, 211, 153, 0.3); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 2rem; }
+    .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+    h2 { font-size: 1.25rem; color: #fff; margin-bottom: 0.75rem; }
+    p, li { color: var(--text-muted); font-size: 0.95rem; }
+    ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+    strong { color: #f8fafc; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../../docs/index.html" class="nav-back">← Back to Documentation Hub</a>
+      <h1>Agent Rule: Accessibility &amp; Responsiveness</h1>
+      <p>Universal quality guidelines ensuring every AI-generated site is fast, accessible, and mobile-friendly.</p>
+    </header>
+
+    <div class="layman-box">
+      <h3 style="color: var(--accent); margin-bottom: 0.5rem;">💡 What is this file for?</h3>
+      <p>This rule guarantees that websites built by AI agents don't break on small smartphone screens and remain easily readable with high contrast for people with visual impairments.</p>
+    </div>
+
+    <div class="card">
+      <h2>Enforced Standards</h2>
+      <ul>
+        <li><strong>WCAG 2.1 AA Contrast:</strong> Text colors are always readable with sharp contrast against dark backgrounds.</li>
+        <li><strong>44px Touch Targets:</strong> All buttons and inputs are comfortable to tap on mobile touchscreens.</li>
+        <li><strong>Semantic HTML:</strong> Strictly uses proper HTML tags (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>) for SEO and screen readers.</li>
+        <li><strong>Descriptive Image Alt Text:</strong> Every photo has meaningful description attributes for search engines and accessibility tools.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

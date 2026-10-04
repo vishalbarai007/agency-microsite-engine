@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Email Dispatch - Agency Microsite Engine</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --code-bg: #030712;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      padding: 0 1rem 4rem;
+    }
+    .container { max-width: 960px; margin: 0 auto; }
+    header {
+      padding: 2.5rem 0 1.5rem;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 2rem;
+    }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      background: linear-gradient(to right, #ffffff, #7dd3fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+    .badge-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .badge-green { background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
+
+    .layman-box {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.8));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 0 25px var(--accent-glow);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .layman-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.75rem;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+    h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; color: #f1f5f9; }
+    p, li { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+    ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.35rem; }
+    strong { color: #f8fafc; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.875rem;
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--card-border);
+    }
+    th { background-color: rgba(30, 41, 59, 0.5); color: #e2e8f0; font-weight: 600; }
+
+    .email-mockup {
+      background: #0b0f19;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .email-header {
+      border-bottom: 1px solid #1e293b;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+    .email-title { font-size: 1.15rem; font-weight: 700; color: #fff; }
+    .email-tag { font-size: 0.75rem; color: #38bdf8; font-weight: 600; text-transform: uppercase; }
+
+    pre {
+      background-color: var(--code-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.5rem;
+      padding: 1.25rem;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      line-height: 1.6;
+      margin: 1rem 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85em;
+      background: rgba(30, 41, 59, 0.6);
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.25rem;
+      color: #38bdf8;
+    }
+    pre code { background: transparent; padding: 0; color: inherit; }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--card-border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../index.html" class="nav-back">← Back to Documentation Hub</a>
+      <h1>Real-Time Email Dispatch (Resend API)</h1>
+      <p>Sub-second transactional lead notifications delivered directly to client sales inboxes with reply-to prospect routing.</p>
+      <div class="badge-bar">
+        <span class="badge badge-blue">Resend REST API</span>
+        <span class="badge badge-blue">Next.js Server Actions</span>
+        <span class="badge badge-green">99.9% Deliverability</span>
+        <span class="badge badge-green">Responsive HTML Email</span>
+      </div>
+    </header>
+
+    <!-- Layman Box -->
+    <div class="layman-box">
+      <div class="layman-title">💡 In Plain English (Why Resend?)</div>
+      <p>When a prospect asks for a quote on the website, the agency's client needs to know immediately so they can call them back before they look at a competitor:</p>
+      <ul>
+        <li>Within <strong>2 seconds</strong> of submission, an alert email lands on the client's smartphone.</li>
+        <li>The email contains the prospect's name, phone, email, chosen service, and exact message formatted in a dark sleek card.</li>
+        <li>Hitting <strong>"Reply"</strong> in Gmail or Apple Mail replies directly to the prospect's email address, not the system robot.</li>
+        <li>No broken Gmail app passwords or SMTP server timeouts.</li>
+      </ul>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="card">
+      <h2>⚖️ Resend vs Old-School SMTP (Nodemailer)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Resend API</th>
+            <th>Old Nodemailer / Gmail SMTP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Speed & Latency</strong></td>
+            <td>Sub-250ms HTTPS POST request</td>
+            <td>3 to 7 seconds TCP handshake (often times out on Vercel)</td>
+          </tr>
+          <tr>
+            <td><strong>Stability</strong></td>
+            <td>Enterprise API, 99.99% uptime</td>
+            <td>Breaks when Google rotates 2FA or blocks app passwords</td>
+          </tr>
+          <tr>
+            <td><strong>Deliverability</strong></td>
+            <td>Built-in SPF, DKIM, and DMARC verification</td>
+            <td>Frequently flagged as spam or untrusted mail</td>
+          </tr>
+          <tr>
+            <td><strong>One-Click Reply</strong></td>
+            <td>Supported via <code>reply_to</code> header</td>
+            <td>Requires complex header overrides</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Email Visual Mockup -->
+    <div class="card">
+      <h2>📬 What the Notification Looks Like</h2>
+      <div class="email-mockup">
+        <div class="email-header">
+          <div class="email-tag">VELOX STUDIO &bull; INSTANT LEAD ALERT</div>
+          <div class="email-title">New Client Inquiry Received</div>
+        </div>
+        <table style="width: 100%; font-size: 0.9rem;">
+          <tr>
+            <td style="color: #94a3b8; width: 35%; padding: 6px 0;">Prospect Name:</td>
+            <td style="color: #fff; font-weight: 700;">Alexander Wright</td>
+          </tr>
+          <tr>
+            <td style="color: #94a3b8; padding: 6px 0;">Email Address:</td>
+            <td style="color: #38bdf8;">alex@wrightgroup.com</td>
+          </tr>
+          <tr>
+            <td style="color: #94a3b8; padding: 6px 0;">Phone:</td>
+            <td style="color: #fff;">+1 (555) 234-8901</td>
+          </tr>
+          <tr>
+            <td style="color: #94a3b8; padding: 6px 0;">Service of Interest:</td>
+            <td style="color: #34d399; font-weight: 700;">Residential Architecture &amp; Planning</td>
+          </tr>
+        </table>
+        <div style="background: #111827; border: 1px solid #1e293b; padding: 12px; border-radius: 6px; margin-top: 12px;">
+          <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Message:</div>
+          <div style="color: #e2e8f0; font-size: 0.9rem; margin-top: 4px;">"We have acquired a 4-acre beachfront plot in Goa and want a modern brutalist villa design ready by Q2 next year."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Configuration -->
+    <div class="card">
+      <h2>⚙️ Environment Setup</h2>
+      <p>Add these three lines into your <code>.env.local</code> file:</p>
+      <pre><code># Resend API Key from https://resend.com/api-keys
+RESEND_API_KEY="re_xxxxxxxxxxxxxx"
+
+# Where you want notifications delivered
+NOTIFICATION_DESTINATION_EMAIL="sales@agency-client.com"
+
+# Verified sender (Use onboarding@resend.dev during dev/staging)
+FROM_EMAIL="Inquiries &lt;onboarding@resend.dev&gt;"</code></pre>
+    </div>
+
+    <footer>
+      Agency Microsite Engine &bull; Standardized Production Architecture &bull; <a href="../index.html" style="color: #38bdf8;">Return to Hub</a>
+    </footer>
+  </div>
+</body>
+</html>

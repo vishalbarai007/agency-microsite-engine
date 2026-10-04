@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Interactive Canvas & Models - Agency Microsite Engine</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #06b6d4;
+      --accent-glow: rgba(6, 182, 212, 0.15);
+      --code-bg: #030712;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      padding: 0 1rem 4rem;
+    }
+    .container { max-width: 960px; margin: 0 auto; }
+    header {
+      padding: 2.5rem 0 1.5rem;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 2rem;
+    }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      background: linear-gradient(to right, #ffffff, #67e8f9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+    .badge-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-cyan { background: rgba(6, 182, 212, 0.15); color: #06b6d4; border: 1px solid rgba(6, 182, 212, 0.3); }
+    .badge-blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+
+    .layman-box {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(8, 51, 68, 0.3));
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      box-shadow: 0 0 25px var(--accent-glow);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .layman-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.75rem;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+    h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; color: #f1f5f9; }
+    p, li { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+    ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.35rem; }
+    strong { color: #f8fafc; }
+
+    pre {
+      background-color: var(--code-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.5rem;
+      padding: 1.25rem;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      line-height: 1.6;
+      margin: 1rem 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85em;
+      background: rgba(30, 41, 59, 0.6);
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.25rem;
+      color: #67e8f9;
+    }
+    pre code { background: transparent; padding: 0; color: inherit; }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--card-border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../index.html" class="nav-back">← Back to Documentation Hub</a>
+      <h1>3D Interactive Canvas &amp; Models (Three.js)</h1>
+      <p>Modern WebGL 3D hero graphics, interactive mouse tracking, and rotatable 3D product models built with React Three Fiber.</p>
+      <div class="badge-bar">
+        <span class="badge badge-cyan">Three.js</span>
+        <span class="badge badge-cyan">React Three Fiber</span>
+        <span class="badge badge-blue">Drei Helpers</span>
+        <span class="badge badge-blue">60fps GPU Capped</span>
+      </div>
+    </header>
+
+    <!-- Layman Box -->
+    <div class="layman-box">
+      <div class="layman-title">💡 In Plain English (Why add 3D elements?)</div>
+      <p>3D visuals in a website header immediately make a startup or agency look like an advanced tech powerhouse:</p>
+      <ul>
+        <li>Visitors see a glowing, metallic 3D sphere or architectural model floating in space.</li>
+        <li>When they move their mouse or tilt their phone, the 3D object reacts and rotates dynamically.</li>
+        <li>Visitors can drag to orbit around 3D buildings, hardware, or consumer products.</li>
+        <li><strong>Performance Protected:</strong> The system automatically caps resolution so it never makes the user's laptop fan spin or battery drain.</li>
+      </ul>
+    </div>
+
+    <!-- Optimization Rules -->
+    <div class="card">
+      <h2>⚡ Built-In Performance Rules</h2>
+      <ul>
+        <li><strong>Resolution Capping:</strong> Normal screens render at 1x; Retina/iPhone screens are clamped at 1.5x (instead of 3x or 4x), saving 70% of GPU rendering power.</li>
+        <li><strong>Smooth Mouse Tracking:</strong> Mathematical linear interpolation (lerp) produces gentle, natural easing rather than harsh snapping.</li>
+        <li><strong>Suspense Skeleton:</strong> A sleek percentage loader shows while 3D meshes download so the user is never left looking at a blank space.</li>
+      </ul>
+    </div>
+
+    <footer>
+      Agency Microsite Engine &bull; Standardized Production Architecture &bull; <a href="../index.html" style="color: #38bdf8;">Return to Hub</a>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7-Day Sprint Playbook - Agency Microsite Engine</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --code-bg: #030712;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      padding: 0 1rem 4rem;
+    }
+    .container { max-width: 960px; margin: 0 auto; }
+    header {
+      padding: 2.5rem 0 1.5rem;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 2rem;
+    }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      background: linear-gradient(to right, #ffffff, #93c5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+    .badge-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .badge-green { background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
+    .badge-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+
+    .layman-box {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.8));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 0 25px var(--accent-glow);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .layman-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.75rem;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+    h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; color: #f1f5f9; }
+    p, li { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+    ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.35rem; }
+    strong { color: #f8fafc; }
+
+    .day-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 0.5rem;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .day-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .day-badge {
+      font-size: 0.75rem;
+      font-weight: 800;
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .day-time { font-size: 0.8rem; color: #94a3b8; }
+    .day-title { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.875rem;
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--card-border);
+    }
+    th { background-color: rgba(30, 41, 59, 0.5); color: #e2e8f0; font-weight: 600; }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--card-border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../index.html" class="nav-back">← Back to Documentation Hub</a>
+      <h1>The 7-Day Sprint Playbook</h1>
+      <p>The standard operating procedure (SOP) to deliver client microsites in 5 to 7 days with 80%+ agency profit margins.</p>
+      <div class="badge-bar">
+        <span class="badge badge-blue">Agency SOP</span>
+        <span class="badge badge-green">80% Margin</span>
+        <span class="badge badge-purple">Zero Scope Creep</span>
+        <span class="badge badge-blue">Monthly Retainer Funnel</span>
+      </div>
+    </header>
+
+    <!-- Layman Box -->
+    <div class="layman-box">
+      <div class="layman-title">💡 In Plain English (Why a 7-day model?)</div>
+      <p>Most agencies lose money because clients take months to reply and ask for endless changes. The 7-Day Sprint solves this permanently:</p>
+      <ul>
+        <li>Clients pay a flat fee upfront for an <strong>Express 7-Day Launch</strong>.</li>
+        <li>Speed becomes the key selling feature, commanding higher fees.</li>
+        <li>We enforce a <strong>strict single round of revisions</strong> on Day 5.</li>
+        <li>Websites launch on time, the client is thrilled, and the agency transitions them into a $99/month care retainer.</li>
+      </ul>
+    </div>
+
+    <!-- Timeline Cards -->
+    <div class="card">
+      <h2>📅 The 7-Day Production Timeline</h2>
+
+      <div class="day-card">
+        <div class="day-header">
+          <span class="day-badge">Day 1</span>
+          <span class="day-time">Time spent: ~45 mins</span>
+        </div>
+        <div class="day-title">Intake &amp; Repository Setup</div>
+        <p>Client completes the 6-question form. Developer clones the starter template, pastes responses into <code>client-spec.json</code>, and creates the Google Sheet webhook.</p>
+      </div>
+
+      <div class="day-card">
+        <div class="day-header">
+          <span class="day-badge">Day 2</span>
+          <span class="day-time">Time spent: 1 - 2 hours</span>
+        </div>
+        <div class="day-title">Autonomous AI Codegen</div>
+        <p>Trigger Antigravity or Claude with the matching archetype skill. The agent builds the full 5-section site, populates <code>src/data/</code>, and configures form actions.</p>
+      </div>
+
+      <div class="day-card">
+        <div class="day-header">
+          <span class="day-badge">Day 3 - 4</span>
+          <span class="day-time">Time spent: 2 - 3 hours</span>
+        </div>
+        <div class="day-title">Developer Polish &amp; QA</div>
+        <p>Swap placeholder logos with client SVGs, adjust mobile typography on 375px/768px viewports, and test that form submissions write to Google Sheets and fire email alerts.</p>
+      </div>
+
+      <div class="day-card">
+        <div class="day-header">
+          <span class="day-badge">Day 5</span>
+          <span class="day-time">Time spent: 30 mins</span>
+        </div>
+        <div class="day-title">Staging Preview &amp; 1 Unified Revision</div>
+        <p>Deploy to a temporary Vercel preview URL. The client reviews on their phone and provides their single consolidated list of text/photo adjustments.</p>
+      </div>
+
+      <div class="day-card">
+        <div class="day-header">
+          <span class="day-badge">Day 6 - 7</span>
+          <span class="day-time">Time spent: 1 hour</span>
+        </div>
+        <div class="day-title">Custom Domain DNS &amp; Launch</div>
+        <p>Apply client edits to <code>src/data/</code>, map custom domain DNS records, verify SSL certificate, hand over the project, and pitch the monthly maintenance retainer.</p>
+      </div>
+    </div>
+
+    <!-- Pricing Strategy -->
+    <div class="card">
+      <h2>💰 Pricing Packages &amp; Retainer Strategy</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Features Included</th>
+            <th>Recommended Flat Fee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Express Landing</strong></td>
+            <td>5 static sections, Zod form, Google Sheet lead tracking</td>
+            <td><strong>$750 – $1,200</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Luxury Brand Showcase</strong></td>
+            <td>GSAP ScrollTrigger, Lenis smooth scroll, editorial design tokens</td>
+            <td><strong>$1,500 – $2,500</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Corporate CMS / Real Estate</strong></td>
+            <td>Sanity blog or property inventory, floor plan modal, lead drawer</td>
+            <td><strong>$2,500 – $4,500</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      Agency Microsite Engine &bull; Standardized Production Architecture &bull; <a href="../index.html" style="color: #38bdf8;">Return to Hub</a>
+    </footer>
+  </div>
+</body>
+</html>

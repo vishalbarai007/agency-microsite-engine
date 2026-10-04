@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation Hub - Agency Microsite Engine</title>
+  <style>
+    :root {
+      --bg: #070a12;
+      --card-bg: #0f172a;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --success: #34d399;
+      --gold: #fbbf24;
+      --purple: #a855f7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      padding: 0 1.5rem 5rem;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+    header {
+      padding: 4rem 0 2.5rem;
+      border-bottom: 1px solid var(--card-border);
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      margin-bottom: 1.25rem;
+    }
+    h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #ffffff 40%, #7dd3fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 2rem;
+    }
+    .search-bar {
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 0.85rem 1.25rem;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 0.75rem;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+    
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 3rem 0 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #f1f5f9;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.85rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-col: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+    .card-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    .category-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+    .badge-blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+    .badge-green { background: rgba(52, 211, 153, 0.15); color: #34d399; }
+    .badge-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+    .badge-gold { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+
+    .status-dot {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      color: var(--success);
+      font-weight: 600;
+    }
+    .status-dot::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 8px var(--success);
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .card-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+    }
+    .card-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.8rem;
+    }
+    .view-link {
+      color: var(--accent);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .md-link {
+      color: #64748b;
+      text-decoration: none;
+    }
+    .md-link:hover { color: #94a3b8; }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--card-border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="hero-badge">Agency Microsite Engine Documentation</span>
+      <h1>Autonomous Microsite Architecture</h1>
+      <p class="subtitle">Complete technical specifications, dark-mode visual guides, and autonomous AI agent skills to deliver high-converting websites in 5 to 7 days.</p>
+      
+      <div class="search-bar">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search guides (e.g. form, sheet, 3d, animation)..." onkeyup="filterDocs()">
+      </div>
+    </header>
+
+    <!-- SECTION 1: Form Engine & Lead Ingestion -->
+    <div class="section-title">📬 Lead Generation &amp; Data Storage</div>
+    <div class="grid" id="leadsGrid">
+      
+      <div class="card" data-title="contact form validation zod react hook form honeypot routing">
+        <div>
+          <div class="card-badge-row">
+            <span class="category-badge badge-blue">Form Engine</span>
+            <span class="status-dot">Production Ready</span>
+          </div>
+          <div class="card-title">Contact Form Validation &amp; Routing</div>
+          <p class="card-desc">Zero-re-render client Zod validation, invisible anti-spam honeypot defense, and dual server-side routing to Google Sheets and Resend Email.</p>
+        </div>
+        <div class="card-actions">
+          <a href="functions/ContactValidation.html" class="view-link">Open Visual Guide &rarr;</a>
+          <a href="functions/ContactValidation.md" class="md-link">View Raw .md</a>
+        </div>
+      </div>
+
+      <div class="card" data-title="google sheets apps script database webhook code.gs">
+        <div>
+          <div class="card-badge-row">
+            <span class="category-badge badge-green">Storage</span>
+            <span class="status-dot">Free $0 / Mo</span>
+          </div>
+          <div class="card-title">Google Sheets Apps Script Integration</div>
+          <p class="card-desc">Deploy a zero-cost, maintenance-free spreadsheet database using Google Apps Script with auto-header generation, concurrency locks, and deployment SOP.</p>
+        </div>
+        <div class="card-actions">
+          <a href="functions/GoogleSheetsIntegration.html" class="view-link">Open Visual Guide &rarr;</a>
+          <a href="functions/GoogleSheetsIntegration.md" class="md-link">View Raw .md</a>
+        </div>
+      </div>
+
+      <div class="card" data-title="email notifications resend api transactional alerts">
+        <div>
+          <div class="card-badge-row">
+            <span class="category-badge badge-blue">Email Alerts</span>
+            <span class="status-dot">Sub-Second</span>
+          </div>
+          <div class="card-title">Real-Time Email Dispatch (Resend API)</div>
+          <p class="card-desc">Sub-second transactional lead notifications delivered directly to client sales inboxes with one-click reply-to prospect routing and mobile dark templates.</p>
+        </div>
+        <div class="card-actions">
+          <a href="functions/EmailDispatch.html" class="view-link">Open Visual Guide &rarr;</a>
+          <a href="functions/EmailDispatch.md" class="md-link">View Raw .md</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECTION 2: Core Architecture & Content Contracts -->
+    <div class="section-title">🧱 Core Architecture &amp; Theming</div>
+    <div class="grid" id="archGrid">
+
+      <div class="card" data-title="decoupled data layer content contracts typescript src/data">
+        <div>
+          <div class="card-badge-row">
+            <span class="category-badge badge-purple">Data Layer</span>
+            <span class="status-dot">Zero Bug Revisions</span>
+          </div>
+          <div class="card-title">Decoupled Content Layer &amp; Contracts</div>
+          <p class="card-desc">Separates all text, media, and prices into typed <code>src/data/*.ts</code> files so developers and clients can make updates in 60 seconds without touching React UI code.</p>
+        </div>
+        <div class="card-actions">
+          <a href="functions/DecoupledDataLayer.html" class="view-link">Open Visual Guide &rarr;</a>
+          <a href="functions/DecoupledDataLayer.md" class="md-link">View Raw .md</a>
+        </div>
+      </div>
+
+      <div class="card" data-title="design tokens theming archetypes premium funky minimal bold-tech typography">
+        <div>
+          <div class="card-badge-row">
+            <span class="category-badge badge-gold">Design Tokens</span>
+            <span class="status-dot">Calibrated</span>
+          </div>
+          <div class="card-title">Design Tokens &amp; Theming Engine</div>
+          <p class="card-desc">Maps brand vibes (Premium, Funky, Minimal, Bold-Tech) directly to curated Google Font pairings, harmonic color palettes, border radiuses, and shadow scales.</p>
+        </div>
+        <div class="card-actions">
+          <a href="functions/DesignTokensAndTheming.html" class="view-link">Open Visual Guide &rarr;</a>
+          <a href="functions/DesignTokensAndTheming.md" class="md-link">View Raw .md</a>
+        </div>
+      </div>
+
+      <div class="card" data-title="client intake spec client-spec.json questionnaire automated copywriting">
+        <div>
+          <div class="card-badge-row">
+            <span class="category-badge badge-blue">Intake Spec</span>
+            <span class="status-dot">6 Questions</span>
+          </div>
+          <div class="card-title">Client Intake &amp; Spec Mapping</div>
+          <p class="card-desc">Generates complete 5-section micro-websites from just 6 client questions using automated AI copywriting frameworks (AIDA/PAS) and Unsplash CDN sourcing.</p>
+        </div>
+        <div class="card-actions">
+          <a href="functions/ClientSpecIntake.html" class="view-link">Open Visual Guide &rarr;</a>
+          <a href="functions/ClientSpecIntake.md" class="md-link">View Raw .md</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECTION 3: Motion, 3D & Advanced Modules -->
+    <div class="section-title">⚡ Motion, 3D &amp; Archetypes</div>
+    <div class="grid" id="motionGrid">
+
+      <div class="card" data-title="gsap scroll animations lenis smooth scroll scrolltrigger parallax">
+        <div>
+          <div class="card-badge-row">
+            <span class="category-badge badge-purple">Cinematic Motion</span>
+            <span class="status-dot">60 FPS Smooth</span>
+          </div>
+          <div class="card-title">Scroll &amp; Cinematic Motion (GSAP + Lenis)</div>
+          <p class="card-desc">Momentum-based smooth scrolling, pinned horizontal storytelling scrubs, and parallax visual depth with automatic mobile performance degradation.</p>
+        </div>
+        <div class="card-actions">
+          <a href="functions/ScrollAndAnimations.html" class="view-link">Open Visual Guide &rarr;</a>
+          <a href="functions/ScrollAndAnimations.md" class="md-link">View Raw .md</a>
+        </div>
+      </div>
+
+      <div class="card" data-title="three.js react three fiber r3f 3d model canvas gltf">
+        <div>
+          <div class="card-badge-row">
+            <span class="category-badge badge-blue">WebGL 3D</span>
+            <span class="status-dot">GPU Protected</span>
+          </div>
+          <div class="card-title">3D Interactive Canvas &amp; Models</div>
+          <p class="card-desc">React Three Fiber 3D hero canvas with mouse tracking, Suspense loading skeleton, and interactive orbit controls for hardware models and luxury villas.</p>
+        </div>
+        <div class="card-actions">
+          <a href="functions/ThreeJsInteraction.html" class="view-link">Open Visual Guide &rarr;</a>
+          <a href="functions/ThreeJsInteraction.md" class="md-link">View Raw .md</a>
+        </div>
+      </div>
+
+      <div class="card" data-title="sanity cms headless blogs portabletext isr on-demand revalidate">
+        <div>
+          <div class="card-badge-row">
+            <span class="category-badge badge-gold">Headless CMS</span>
+            <span class="status-dot">On-Demand ISR</span>
+          </div>
+          <div class="card-title">Sanity CMS &amp; On-Demand ISR</div>
+          <p class="card-desc">Headless editorial blogging engine with GROQ querying, PortableText rendering, sub-second webhook cache invalidation, and zero-crash mock fallback.</p>
+        </div>
+        <div class="card-actions">
+          <a href="functions/SanityCMSIntegration.html" class="view-link">Open Visual Guide &rarr;</a>
+          <a href="functions/SanityCMSIntegration.md" class="md-link">View Raw .md</a>
+        </div>
+      </div>
+
+      <div class="card" data-title="real estate property inventory floorplan modal embla carousel">
+        <div>
+          <div class="card-badge-row">
+            <span class="category-badge badge-gold">Real Estate</span>
+            <span class="status-dot">High Margin</span>
+          </div>
+          <div class="card-title">Real Estate &amp; Floorplan Showcase</div>
+          <p class="card-desc">Filterable unit inventories (1BHK/2BHK/Villa), zoomable architectural blueprint dialogs, and persistent private viewing appointment drawers.</p>
+        </div>
+        <div class="card-actions">
+          <a href="functions/RealEstateShowcase.html" class="view-link">Open Visual Guide &rarr;</a>
+          <a href="functions/RealEstateShowcase.md" class="md-link">View Raw .md</a>
+        </div>
+      </div>
+
+      <div class="card" data-title="ecommerce micro-store zustand cart whatsapp checkout stripe">
+        <div>
+          <div class="card-badge-row">
+            <span class="category-badge badge-green">E-Commerce</span>
+            <span class="status-dot">Zero Monthly Fees</span>
+          </div>
+          <div class="card-title">Micro-Ecommerce &amp; WhatsApp Checkout</div>
+          <p class="card-desc">Boutique product catalog with persistent Zustand cart drawer, pre-formatted WhatsApp order chat dispatch, and optional Stripe hosted sessions.</p>
+        </div>
+        <div class="card-actions">
+          <a href="functions/MicroEcommerce.html" class="view-link">Open Visual Guide &rarr;</a>
+          <a href="functions/MicroEcommerce.md" class="md-link">View Raw .md</a>
+        </div>
+      </div>
+
+      <div class="card" data-title="sprint playbook agency sop 7-day revenue retainer vercel">
+        <div>
+          <div class="card-badge-row">
+            <span class="category-badge badge-purple">Agency SOP</span>
+            <span class="status-dot">80% Margin</span>
+          </div>
+          <div class="card-title">The 7-Day Sprint Playbook</div>
+          <p class="card-desc">Day-by-day operational workflow from client intake to custom domain handover, fixed-scope pricing packages, and monthly care retainer sales.</p>
+        </div>
+        <div class="card-actions">
+          <a href="functions/SevenDaySprintPlaybook.html" class="view-link">Open Visual Guide &rarr;</a>
+          <a href="functions/SevenDaySprintPlaybook.md" class="md-link">View Raw .md</a>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      Agency Microsite Engine &bull; Built for Autonomous AI Workflows (Antigravity &amp; Claude) &bull; 2026 Production Standard
+    </footer>
+  </div>
+
+  <script>
+    function filterDocs() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const text = card.getAttribute('data-title').toLowerCase() + ' ' + card.innerText.toLowerCase();
+        if (text.includes(query)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Micro-Ecommerce & WhatsApp Checkout - Agency Microsite Engine</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #22c55e;
+      --accent-glow: rgba(34, 197, 94, 0.15);
+      --code-bg: #030712;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      padding: 0 1rem 4rem;
+    }
+    .container { max-width: 960px; margin: 0 auto; }
+    header {
+      padding: 2.5rem 0 1.5rem;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 2rem;
+    }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      background: linear-gradient(to right, #ffffff, #86efac);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+    .badge-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-green { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
+    .badge-blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+
+    .layman-box {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(20, 83, 45, 0.25));
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      box-shadow: 0 0 25px var(--accent-glow);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .layman-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.75rem;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+    h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; color: #f1f5f9; }
+    p, li { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+    ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.35rem; }
+    strong { color: #f8fafc; }
+
+    .message-preview {
+      background: #030712;
+      border: 1px solid #166534;
+      border-radius: 0.5rem;
+      padding: 1.25rem;
+      color: #86efac;
+      font-family: monospace;
+      font-size: 0.85rem;
+      white-space: pre-wrap;
+      margin: 1rem 0;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--card-border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../index.html" class="nav-back">← Back to Documentation Hub</a>
+      <h1>Micro-Ecommerce &amp; WhatsApp Checkout</h1>
+      <p>High-converting boutique merchandise sales with Zustand persistent cart and dual WhatsApp/Stripe checkout routing.</p>
+      <div class="badge-bar">
+        <span class="badge badge-green">WhatsApp Direct Order</span>
+        <span class="badge badge-green">Zustand Cart Store</span>
+        <span class="badge badge-blue">Stripe Checkout Option</span>
+        <span class="badge badge-blue">Zero Monthly SaaS Fees</span>
+      </div>
+    </header>
+
+    <!-- Layman Box -->
+    <div class="layman-box">
+      <div class="layman-title">💡 In Plain English (Why small shops love this)</div>
+      <p>Setting up a full Shopify or WooCommerce store takes weeks and costs hundreds of dollars in monthly fees. For a brand launching a limited batch of 3 products (like a signature perfume, merch hoodie, or luxury coffee roast):</p>
+      <ul>
+        <li>Visitors can click <strong>"Add to Bag"</strong> and see an instant slide-out cart drawer.</li>
+        <li>Items stay saved in their cart even if they refresh or close the tab.</li>
+        <li><strong>One-Click WhatsApp Order:</strong> Clicking checkout opens WhatsApp with their entire cart neatly itemized and priced, ready to send with one tap.</li>
+        <li><strong>Stripe Card Payments:</strong> Or, if the client prefers credit card processing, it automatically forwards to Stripe.</li>
+      </ul>
+    </div>
+
+    <!-- What WhatsApp looks like -->
+    <div class="card">
+      <h2>📱 Auto-Generated WhatsApp Order Preview</h2>
+      <p>When the shopper taps "Order via WhatsApp", their WhatsApp opens with this exact message pre-typed:</p>
+      <div class="message-preview">*NEW ORDER INQUIRY*
+────────────────────
+1. *Minimalist Ceramic Vase* (Matte Black)
+   Qty: 1 × $85.00 = $85.00
+2. *Linen Table Runner* (Natural Oat)
+   Qty: 2 × $35.00 = $70.00
+────────────────────
+*TOTAL AMOUNT: $155.00*
+
+Please confirm availability and share payment/shipping instructions.</div>
+    </div>
+
+    <!-- Tech Benefits -->
+    <div class="card">
+      <h2>🚀 Key Architectural Perks</h2>
+      <ul>
+        <li><strong>Zustand:</strong> Lightning fast state without bulky context providers or unnecessary page re-renders.</li>
+        <li><strong>Local Persistence:</strong> Automatically remembers user items using HTML5 localStorage.</li>
+        <li><strong>Zero Abandoned Cart Fees:</strong> Direct conversational sales via WhatsApp close up to 3x higher than standard card checkout in many regions.</li>
+      </ul>
+    </div>
+
+    <footer>
+      Agency Microsite Engine &bull; Standardized Production Architecture &bull; <a href="../index.html" style="color: #38bdf8;">Return to Hub</a>
+    </footer>
+  </div>
+</body>
+</html>

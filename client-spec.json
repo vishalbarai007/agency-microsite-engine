@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "archetype": "brand-showcase",
+  "brand": {
+    "name": "Velox Studio",
+    "industry": "Architecture & Luxury Residences",
+    "vibe": "premium",
+    "palette": {
+      "primary": "#0F0F11",
+      "accent": "#C5A880",
+      "background": "dark"
+    },
+    "tagline": "Crafting bespoke living spaces that blur art and architecture.",
+    "logoUrl": "/placeholder/logo.svg"
+  },
+  "navigation": [
+    { "label": "Services", "href": "#services" },
+    { "label": "Residences", "href": "#showcase" },
+    { "label": "Philosophy", "href": "#philosophy" },
+    { "label": "Inquire", "href": "#contact" }
+  ],
+  "leadCapture": {
+    "destinations": ["google_sheets", "email"],
+    "fields": ["fullName", "email", "phone", "service", "message"]
+  },
+  "contentSummaries": {
+    "heroHeadline": "Architecture That Commands Stillness",
+    "heroSubheadline": "Curated residential developments and architectural planning tailored to natural topography across Mumbai and Goa.",
+    "coreOfferings": [
+      {
+        "title": "Turnkey Residential Villas",
+        "description": "Custom waterfront sanctuaries built with sustainable stone, circadian lighting, and bioclimatic ventilation."
+      },
+      {
+        "title": "Spatial 3D Planning",
+        "description": "Comprehensive volumetric blueprints, environmental sunlight simulations, and structural approvals."
+      },
+      {
+        "title": "Interior Curation",
+        "description": "Bespoke millwork, acoustic balancing, natural stone sourcing, and custom artisan furniture manufacturing."
+      }
+    ]
+  }
+}

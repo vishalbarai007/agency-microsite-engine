@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Rule: Design Tokens - Agency Microsite Engine</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #fbbf24;
+      --accent-glow: rgba(251, 191, 36, 0.15);
+      --code-bg: #030712;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+      padding: 0 1rem 4rem;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    header { padding: 2.5rem 0 1.5rem; border-bottom: 1px solid var(--card-border); margin-bottom: 2rem; }
+    .nav-back { display: inline-flex; align-items: center; gap: 0.5rem; color: #38bdf8; text-decoration: none; font-size: 0.875rem; margin-bottom: 1rem; }
+    h1 { font-size: 2.2rem; font-weight: 800; background: linear-gradient(to right, #fff, #fde68a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+    .layman-box { background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 2rem; }
+    .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+    h2 { font-size: 1.25rem; color: #fff; margin-bottom: 0.75rem; }
+    p, li { color: var(--text-muted); font-size: 0.95rem; }
+    ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+    strong { color: #f8fafc; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../../docs/index.html" class="nav-back">← Back to Documentation Hub</a>
+      <h1>Agent Rule: Design Tokens &amp; Aesthetic Presets</h1>
+      <p>Instructions enforced by Antigravity and Claude agents to generate aesthetically distinct websites matching client brand vibes.</p>
+    </header>
+
+    <div class="layman-box">
+      <h3 style="color: var(--accent); margin-bottom: 0.5rem;">💡 What is this file for?</h3>
+      <p>This file is a rulebook for AI coding agents. When you tell the AI "build a website for a luxury hotel", it reads this file so it knows exactly which fonts (Cormorant Garamond), colors (champagne gold and obsidian), and layout spacing to use instead of guessing.</p>
+    </div>
+
+    <div class="card">
+      <h2>Prescribed Aesthetic Modes</h2>
+      <ul>
+        <li><strong>premium:</strong> Editorial serif typography, champagne gold accents, hairline borders, expansive luxury spacing.</li>
+        <li><strong>funky:</strong> Bold neo-brutalist style, electric lime/yellow accents, 3px solid black borders, hard offset drop shadows.</li>
+        <li><strong>minimal:</strong> Pure Swiss style, neutral zinc greys, hairline dividers, strict 8pt grid.</li>
+        <li><strong>bold-tech:</strong> Midnight slate background, neon cyan/violet glows, glassmorphism cards.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

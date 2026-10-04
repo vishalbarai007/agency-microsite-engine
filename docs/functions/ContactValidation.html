@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form Validation & Routing - Agency Microsite Engine</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --success: #34d399;
+      --warning: #fbbf24;
+      --code-bg: #030712;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      padding: 0 1rem 4rem;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    header {
+      padding: 2.5rem 0 1.5rem;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 2rem;
+    }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      transition: opacity 0.2s;
+    }
+    .nav-back:hover { opacity: 0.8; }
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      background: linear-gradient(to right, #ffffff, #93c5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+    .badge-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-primary { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .badge-success { background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
+    .badge-warning { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+
+    .layman-box {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.8));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 0 25px var(--accent-glow);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .layman-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.75rem;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 1.25rem 0 0.5rem;
+      color: #e2e8f0;
+    }
+    p, li {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.35rem; }
+    strong { color: #f8fafc; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.875rem;
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--card-border);
+    }
+    th {
+      background-color: rgba(30, 41, 59, 0.5);
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+    tr:hover td { background-color: rgba(30, 41, 59, 0.2); }
+
+    pre {
+      background-color: var(--code-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.5rem;
+      padding: 1.25rem;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      line-height: 1.6;
+      margin: 1rem 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85em;
+      background: rgba(30, 41, 59, 0.6);
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.25rem;
+      color: #38bdf8;
+    }
+    pre code { background: transparent; padding: 0; color: inherit; }
+
+    .diagram {
+      background: #030712;
+      border: 1px solid #1e293b;
+      border-radius: 0.5rem;
+      padding: 1.25rem;
+      color: #38bdf8;
+      font-family: monospace;
+      white-space: pre;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    .check-list { list-style: none; margin-left: 0; }
+    .check-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .check-icon { color: var(--success); font-weight: bold; }
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--card-border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../index.html" class="nav-back">← Back to Documentation Hub</a>
+      <h1>Contact Form Validation & Multi-Destination Routing</h1>
+      <p>Zero-re-render client validation, server-side data sanitization, invisible honeypot anti-spam defense, and instant data broadcast to Google Sheets and client inboxes.</p>
+      <div class="badge-bar">
+        <span class="badge badge-primary">Next.js 15 Server Actions</span>
+        <span class="badge badge-primary">Zod Schema</span>
+        <span class="badge badge-primary">React Hook Form</span>
+        <span class="badge badge-success">Google Sheets Apps Script</span>
+        <span class="badge badge-success">Resend Email API</span>
+        <span class="badge badge-warning">Honeypot Anti-Spam</span>
+      </div>
+    </header>
+
+    <!-- Plain English / Layman explanation -->
+    <div class="layman-box">
+      <div class="layman-title">💡 In Plain English (What does this do?)</div>
+      <p>When someone visits the client's microsite and fills out the contact form, this system makes sure:</p>
+      <ul>
+        <li>The visitor typed a real email and didn't leave critical fields blank (checked immediately in their browser).</li>
+        <li>Spam bots are automatically caught using an invisible trap field ("honeypot") without annoying humans with CAPTCHAs.</li>
+        <li>Their inquiry instantly appears as a new row in the client's <strong>Google Sheet</strong> so the sales team can track it.</li>
+        <li>The client gets an <strong>instant email alert</strong> on their phone with the full message.</li>
+        <li>The visitor sees a modern floating success alert ("Message received!") in under 1 second.</li>
+      </ul>
+    </div>
+
+    <!-- Tech Stack Table -->
+    <div class="card">
+      <h2>🛠️ Tech Stack & Dependencies</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Library / Tool</th>
+            <th>Role</th>
+            <th>Why it was chosen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>zod</code></td>
+            <td>Input Validation</td>
+            <td>Guarantees 100% type-safe data rules shared between browser and server.</td>
+          </tr>
+          <tr>
+            <td><code>react-hook-form</code></td>
+            <td>Form State</td>
+            <td>Fast typing with zero unnecessary screen re-renders.</td>
+          </tr>
+          <tr>
+            <td><code>@hookform/resolvers</code></td>
+            <td>Integration Bridge</td>
+            <td>Connects Zod rules directly into the form inputs with one line of code.</td>
+          </tr>
+          <tr>
+            <td><code>sonner</code></td>
+            <td>Toast Alerts</td>
+            <td>Sleek, dark-mode ready notifications with smooth entry/exit animations.</td>
+          </tr>
+          <tr>
+            <td><code>Next.js Server Actions</code></td>
+            <td>Secure Backend</td>
+            <td>Keeps Google Sheet and Email API keys 100% secret on the server.</td>
+          </tr>
+          <tr>
+            <td><code>Google Apps Script</code></td>
+            <td>Free Database</td>
+            <td>Saves leads directly into Google Sheets with zero cloud hosting costs.</td>
+          </tr>
+          <tr>
+            <td><code>Resend API</code></td>
+            <td>Email Delivery</td>
+            <td>Industry standard 99.9% inbox deliverability with rich HTML templates.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Data Flow Diagram -->
+    <div class="card">
+      <h2>🔄 Data Flow & Multi-Destination Routing</h2>
+      <div class="diagram">
+[Visitor Browser]
+      │
+      │ 1. Fills form and clicks "Send Message"
+      │    Instant Zod validation tests input fields in milliseconds
+      ▼
+[Next.js Server Action] (app/actions/submitContactForm.ts)
+      │
+      ├─► 2. Server re-verifies data (prevents curl/bot forgery)
+      ├─► 3. Honeypot check: If invisible trap field is filled, drop silently (fake HTTP 200)
+      │
+      ├───────────────────────────────┬───────────────────────────────┐
+      ▼                               ▼                               ▼
+[Google Sheets Webhook]      [Resend Email API]             [Server Audit Log]
+Appends row in spreadsheet   Dispatches HTML email to       Logs timestamp & lead ID
+via Google Apps Script       client's personal inbox        for debugging & analytics</div>
+    </div>
+
+    <!-- What Data is Stored -->
+    <div class="card">
+      <h2>📊 What Data is Stored & Sent?</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Field Name</th>
+            <th>Data Type</th>
+            <th>Validation Rule</th>
+            <th>Destination</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>fullName</code></td>
+            <td>String</td>
+            <td>2 to 80 characters, trimmed</td>
+            <td>Sheet Column B & Email Header</td>
+          </tr>
+          <tr>
+            <td><code>email</code></td>
+            <td>String (Email)</td>
+            <td>Valid RFC email format</td>
+            <td>Sheet Column C & Reply-to Header</td>
+          </tr>
+          <tr>
+            <td><code>phone</code></td>
+            <td>String (Optional)</td>
+            <td>7 to 20 digits with international prefixes (+1, +91)</td>
+            <td>Sheet Column D & Email Details</td>
+          </tr>
+          <tr>
+            <td><code>service</code></td>
+            <td>String (Enum)</td>
+            <td>Must match one of client's active offerings</td>
+            <td>Sheet Column E & Email Subject</td>
+          </tr>
+          <tr>
+            <td><code>message</code></td>
+            <td>String (Text)</td>
+            <td>10 to 1,500 characters</td>
+            <td>Sheet Column F & Email Body</td>
+          </tr>
+          <tr>
+            <td><code>timestamp</code></td>
+            <td>ISO 8601 String</td>
+            <td>Generated automatically by server (e.g. 2026-10-04T12:00:00Z)</td>
+            <td>Sheet Column A & Email Footer</td>
+          </tr>
+          <tr>
+            <td><code>honeypot</code></td>
+            <td>Hidden String</td>
+            <td>Must remain strictly empty. If filled, discarded as bot spam.</td>
+            <td>Nowhere (Dropped)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Security & Honeypot Explanation -->
+    <div class="card">
+      <h2>🛡️ Anti-Spam Honeypot: How It Works</h2>
+      <p>Traditional CAPTCHAs (clicking fire hydrants or crosswalks) kill conversion rates by frustrating legitimate users. Instead, we use an <strong>invisible honeypot trap</strong>:</p>
+      <ul>
+        <li>We add an extra text field named <code>honeypot</code> with CSS: <code>opacity: 0; position: absolute; pointer-events: none; tab-index: -1</code>.</li>
+        <li>Human users cannot see, click, or tab into this field, so it always remains blank.</li>
+        <li>Automated spam scrapers read raw HTML and automatically populate every input field with spam text.</li>
+        <li>When the server detects any text in <code>honeypot</code>, it returns a <em>fake success message</em> to the bot but never writes to the Google Sheet or sends an email.</li>
+      </ul>
+    </div>
+
+    <!-- Verification Checklist -->
+    <div class="card">
+      <h2>✅ Quality Assurance Checklist</h2>
+      <ul class="check-list">
+        <li><span class="check-icon">✓</span> Submitting an empty form triggers clear red errors under the exact missing inputs.</li>
+        <li><span class="check-icon">✓</span> Typing an invalid email (e.g. <code>jane@</code>) prevents submission and prompts the user.</li>
+        <li><span class="check-icon">✓</span> Submitting valid data shows a glowing green Sonner toast notification and clears the form.</li>
+        <li><span class="check-icon">✓</span> The inquiry immediately shows up as a timestamped row in the designated Google Sheet.</li>
+        <li><span class="check-icon">✓</span> The client receives a clean HTML notification email in their inbox within 3 seconds.</li>
+      </ul>
+    </div>
+
+    <footer>
+      Agency Microsite Engine &bull; Standardized Production Architecture &bull; <a href="../index.html" style="color: var(--accent);">Return to Hub</a>
+    </footer>
+  </div>
+</body>
+</html>

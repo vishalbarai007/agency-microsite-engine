@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Skill: build-sanity-cms - Agency Microsite Engine</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #f43f5e;
+      --code-bg: #030712;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+      padding: 0 1rem 4rem;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    header { padding: 2.5rem 0 1.5rem; border-bottom: 1px solid var(--card-border); margin-bottom: 2rem; }
+    .nav-back { display: inline-flex; align-items: center; gap: 0.5rem; color: #38bdf8; text-decoration: none; font-size: 0.875rem; margin-bottom: 1rem; }
+    h1 { font-size: 2.2rem; font-weight: 800; background: linear-gradient(to right, #fff, #fda4af); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+    .layman-box { background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(244, 63, 94, 0.3); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 2rem; }
+    .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+    h2 { font-size: 1.25rem; color: #fff; margin-bottom: 0.75rem; }
+    p, li { color: var(--text-muted); font-size: 0.95rem; }
+    ol { margin-left: 1.5rem; margin-bottom: 1rem; }
+    strong { color: #f8fafc; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../../../docs/index.html" class="nav-back">← Back to Documentation Hub</a>
+      <h1>Agent Skill: build-sanity-cms</h1>
+      <p>Automated execution workflow for corporate Sanity CMS blogs and news portals.</p>
+    </header>
+
+    <div class="layman-box">
+      <h3 style="color: var(--accent); margin-bottom: 0.5rem;">💡 What does invoking this skill do?</h3>
+      <p>When you invoke <code>@build-sanity-cms</code>, the AI agent sets up a headless blog backed by Sanity CMS with GROQ queries, PortableText rendering, on-demand revalidation webhooks, and automatic fallback data so the site never crashes during development.</p>
+    </div>
+
+    <div class="card">
+      <h2>Workflow Phases</h2>
+      <ol>
+        <li><strong>Sanity Client &amp; GROQ:</strong> Initializes API client and typed article queries.</li>
+        <li><strong>Dynamic Routes:</strong> Scaffolds <code>/blogs</code> and <code>/blogs/[slug]</code>.</li>
+        <li><strong>On-Demand ISR:</strong> Connects webhook handler in <code>app/api/revalidate/route.ts</code>.</li>
+        <li><strong>Offline Safety:</strong> Implements local mock articles if Sanity keys are absent.</li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>

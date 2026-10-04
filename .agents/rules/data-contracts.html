@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Rule: Data Contracts - Agency Microsite Engine</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #818cf8;
+      --code-bg: #030712;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+      padding: 0 1rem 4rem;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    header { padding: 2.5rem 0 1.5rem; border-bottom: 1px solid var(--card-border); margin-bottom: 2rem; }
+    .nav-back { display: inline-flex; align-items: center; gap: 0.5rem; color: #38bdf8; text-decoration: none; font-size: 0.875rem; margin-bottom: 1rem; }
+    h1 { font-size: 2.2rem; font-weight: 800; background: linear-gradient(to right, #fff, #c7d2fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+    .layman-box { background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(129, 140, 248, 0.3); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 2rem; }
+    .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+    h2 { font-size: 1.25rem; color: #fff; margin-bottom: 0.75rem; }
+    p, li { color: var(--text-muted); font-size: 0.95rem; }
+    ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+    strong { color: #f8fafc; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../../docs/index.html" class="nav-back">← Back to Documentation Hub</a>
+      <h1>Agent Rule: Data Contracts &amp; Isolation</h1>
+      <p>Architectural constraints that force the AI agent to isolate all website content into dedicated data files.</p>
+    </header>
+
+    <div class="layman-box">
+      <h3 style="color: var(--accent); margin-bottom: 0.5rem;">💡 What is this file for?</h3>
+      <p>This rule forces the AI agent to never write text or prices directly into page code. It forces the agent to create clean content files in <code>src/data/</code>, making future edits 10x faster and completely eliminating code regressions.</p>
+    </div>
+
+    <div class="card">
+      <h2>Enforced Standards</h2>
+      <ul>
+        <li><strong>Strict Data Separation:</strong> All text and image URLs live exclusively in <code>src/data/*.ts</code>.</li>
+        <li><strong>TypeScript Typing:</strong> Every data file must conform to <code>src/types/dataContracts.ts</code>.</li>
+        <li><strong>Reliable Fallbacks:</strong> Contextual high-res Unsplash CDN links are used whenever custom media is unavailable.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

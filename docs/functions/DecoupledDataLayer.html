@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decoupled Data Layer - Agency Microsite Engine</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #818cf8;
+      --accent-glow: rgba(129, 140, 248, 0.15);
+      --code-bg: #030712;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      padding: 0 1rem 4rem;
+    }
+    .container { max-width: 960px; margin: 0 auto; }
+    header {
+      padding: 2.5rem 0 1.5rem;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 2rem;
+    }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      background: linear-gradient(to right, #ffffff, #c7d2fe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+    .badge-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-purple { background: rgba(129, 140, 248, 0.15); color: #818cf8; border: 1px solid rgba(129, 140, 248, 0.3); }
+    .badge-blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+
+    .layman-box {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(49, 46, 129, 0.2));
+      border: 1px solid rgba(129, 140, 248, 0.3);
+      box-shadow: 0 0 25px var(--accent-glow);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .layman-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.75rem;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+    h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; color: #f1f5f9; }
+    p, li { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+    ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.35rem; }
+    strong { color: #f8fafc; }
+
+    .file-tree {
+      background: #030712;
+      border: 1px solid #1e293b;
+      border-radius: 0.5rem;
+      padding: 1.25rem;
+      font-family: monospace;
+      color: #818cf8;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 1rem 0;
+    }
+
+    pre {
+      background-color: var(--code-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.5rem;
+      padding: 1.25rem;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      line-height: 1.6;
+      margin: 1rem 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85em;
+      background: rgba(30, 41, 59, 0.6);
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.25rem;
+      color: #a5b4fc;
+    }
+    pre code { background: transparent; padding: 0; color: inherit; }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--card-border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../index.html" class="nav-back">← Back to Documentation Hub</a>
+      <h1>Decoupled Data Layer & Content Contracts</h1>
+      <p>Clean separation of business copy, photos, and links from React UI components for instantaneous zero-bug revisions.</p>
+      <div class="badge-bar">
+        <span class="badge badge-purple">Decoupled Architecture</span>
+        <span class="badge badge-purple">Type-Safe Contracts</span>
+        <span class="badge badge-blue">Zero JSX Touched</span>
+        <span class="badge badge-blue">Fast Revisions</span>
+      </div>
+    </header>
+
+    <!-- Layman Box -->
+    <div class="layman-box">
+      <div class="layman-title">💡 In Plain English (Why Decouple Data?)</div>
+      <p>In standard websites, text, prices, and photos are tangled up inside complex React code. If a client says "Hey, can you change our tagline from X to Y?", a developer has to hunt through 10 component files, which risks breaking the design:</p>
+      <ul>
+        <li>In this engine, <strong>all website content lives in simple data files inside <code>src/data/</code></strong>.</li>
+        <li>One file controls the navbar links, one controls the hero text, one controls the services, and one controls the reviews.</li>
+        <li>To change content, anyone (even a junior intern or an AI agent) just changes a single line of text in <code>hero.ts</code>.</li>
+        <li>The website updates automatically across all pages with <strong>zero risk of breaking styles</strong>.</li>
+      </ul>
+    </div>
+
+    <!-- File Mapping Tree -->
+    <div class="card">
+      <h2>📂 Content File Organization</h2>
+      <div class="file-tree">
+src/data/
+├── siteConfig.ts     ➔ Brand name, logo, social links, SEO tags & colors
+├── navigation.ts     ➔ Header navigation tree & footer quick links
+├── hero.ts           ➔ Main headline, subtitle, buttons, & hero video/photo
+├── offerings.ts      ➔ Services, packages, features & price tiers
+├── testimonials.ts   ➔ Client reviews, star ratings, & photo avatars
+├── faqs.ts           ➔ Frequently asked questions & answers
+└── units.ts          ➔ (Real Estate) Apartment units, sqft, & floor plans
+      </div>
+    </div>
+
+    <!-- Data vs Component Example -->
+    <div class="card">
+      <h2>📝 How It Looks in Code</h2>
+      <p>Here is how a service card is defined in <code>src/data/offerings.ts</code>:</p>
+      <pre><code>export const offeringsData = [
+  {
+    id: "service-1",
+    title: "Bespoke Spatial Design",
+    tagline: "Harmonizing light, volume, and material",
+    description: "Architectural blueprints and spatial planning for private luxury residences.",
+    imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+    badge: "Signature",
+    features: ["Volumetric 3D Modeling", "Bioclimatic Analysis", "Engineering Permits"],
+    ctaLink: "#contact"
+  }
+];</code></pre>
+      <p>The UI component in <code>src/components/sections/FeatureGrid.tsx</code> just reads this data and loops over it. You never have to edit the component to change a service!</p>
+    </div>
+
+    <!-- Benefits -->
+    <div class="card">
+      <h2>📈 Agency Business Advantage</h2>
+      <ul>
+        <li><strong>One-Click Revisions:</strong> When clients send feedback during Day 5 review, updating the site takes under 5 minutes.</li>
+        <li><strong>Profitable Monthly Maintenance:</strong> Charge clients $99/month for text/photo updates. An agency dev completes tasks in 60 seconds without risk.</li>
+        <li><strong>AI Autonomy:</strong> Antigravity and Claude agents can populate 100% of the site's content cleanly by filling in these exact structured files.</li>
+      </ul>
+    </div>
+
+    <footer>
+      Agency Microsite Engine &bull; Standardized Production Architecture &bull; <a href="../index.html" style="color: #38bdf8;">Return to Hub</a>
+    </footer>
+  </div>
+</body>
+</html>

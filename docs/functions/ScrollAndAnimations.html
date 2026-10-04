@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll & Cinematic Animations - Agency Microsite Engine</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #a855f7;
+      --accent-glow: rgba(168, 85, 247, 0.15);
+      --code-bg: #030712;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      padding: 0 1rem 4rem;
+    }
+    .container { max-width: 960px; margin: 0 auto; }
+    header {
+      padding: 2.5rem 0 1.5rem;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 2rem;
+    }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      background: linear-gradient(to right, #ffffff, #d8b4fe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+    .badge-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .badge-blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .badge-green { background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
+
+    .layman-box {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(88, 28, 135, 0.2));
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      box-shadow: 0 0 25px var(--accent-glow);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .layman-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.75rem;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+    h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; color: #f1f5f9; }
+    p, li { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+    ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.35rem; }
+    strong { color: #f8fafc; }
+
+    pre {
+      background-color: var(--code-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.5rem;
+      padding: 1.25rem;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      line-height: 1.6;
+      margin: 1rem 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85em;
+      background: rgba(30, 41, 59, 0.6);
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.25rem;
+      color: #d8b4fe;
+    }
+    pre code { background: transparent; padding: 0; color: inherit; }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--card-border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../index.html" class="nav-back">← Back to Documentation Hub</a>
+      <h1>Scroll & Cinematic Animations (GSAP + Lenis)</h1>
+      <p>Luxury agency scrolling physics, pinned storytelling sections, and parallax visual depth.</p>
+      <div class="badge-bar">
+        <span class="badge badge-purple">Lenis Smooth Scroll</span>
+        <span class="badge badge-purple">GSAP ScrollTrigger</span>
+        <span class="badge badge-blue">Framer Motion</span>
+        <span class="badge badge-green">Mobile Safe (Zero Jank)</span>
+      </div>
+    </header>
+
+    <!-- Layman Box -->
+    <div class="layman-box">
+      <div class="layman-title">💡 In Plain English (Why do high-end sites need this?)</div>
+      <p>Cheap websites have jerky, mechanical scrolling. Luxury agency websites (like Apple, Tesla, or high-end architectural studios) feel buttery smooth, heavy, and expensive:</p>
+      <ul>
+        <li><strong>Lenis Momentum:</strong> When the user scrolls their mouse wheel, the page glides smoothly like floating on silk.</li>
+        <li><strong>Pinned Storytelling:</strong> As you scroll down, the screen locks in place while cards glide horizontally across the screen like slides in a theater.</li>
+        <li><strong>Parallax Depth:</strong> Background photos move at a slightly slower speed than text, giving a rich 3D feeling.</li>
+        <li><strong>Smart Mobile Fallback:</strong> On mobile phones, heavy pinned effects automatically turn off so the phone battery doesn't drain and touch scrolling stays lightning fast.</li>
+      </ul>
+    </div>
+
+    <!-- Features Overview -->
+    <div class="card">
+      <h2>✨ Cinematic Effects Included in the Engine</h2>
+      <ul>
+        <li><strong>SmoothScrollProvider:</strong> Glues Lenis smooth scrolling to GSAP's 60fps clock with zero stutter.</li>
+        <li><strong>ParallaxImage Wrapper:</strong> Gives any photo gentle optical depth based on user scroll velocity.</li>
+        <li><strong>HorizontalNarrative:</strong> Converts vertical scroll wheel ticks into horizontal slide transitions on desktop screens.</li>
+        <li><strong>Staggered Text Reveals:</strong> Headlines animate into view line-by-line as they enter the screen.</li>
+      </ul>
+    </div>
+
+    <footer>
+      Agency Microsite Engine &bull; Standardized Production Architecture &bull; <a href="../index.html" style="color: #38bdf8;">Return to Hub</a>
+    </footer>
+  </div>
+</body>
+</html>

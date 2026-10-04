@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Tokens & Theming Engine - Agency Microsite Engine</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #f59e0b;
+      --accent-glow: rgba(245, 158, 11, 0.15);
+      --code-bg: #030712;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      padding: 0 1rem 4rem;
+    }
+    .container { max-width: 960px; margin: 0 auto; }
+    header {
+      padding: 2.5rem 0 1.5rem;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 2rem;
+    }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      background: linear-gradient(to right, #ffffff, #fcd34d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+    .badge-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-amber { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+
+    .layman-box {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(120, 53, 15, 0.2));
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      box-shadow: 0 0 25px var(--accent-glow);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .layman-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.75rem;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+    h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; color: #f1f5f9; }
+    h3 { font-size: 1.05rem; font-weight: 700; margin-top: 1rem; color: #e2e8f0; }
+    p, li { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+    ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.35rem; }
+    strong { color: #f8fafc; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.875rem;
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--card-border);
+    }
+    th { background-color: rgba(30, 41, 59, 0.5); color: #e2e8f0; font-weight: 600; }
+
+    .vibe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .vibe-card {
+      background: #030712;
+      border: 1px solid #1e293b;
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+    }
+    .vibe-name { font-weight: 800; font-size: 1rem; color: #fff; margin-bottom: 0.25rem; }
+    .vibe-fonts { font-size: 0.8rem; color: #38bdf8; margin-bottom: 0.5rem; }
+    .vibe-desc { font-size: 0.8rem; color: #94a3b8; line-height: 1.5; }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--card-border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../index.html" class="nav-back">← Back to Documentation Hub</a>
+      <h1>Design Tokens &amp; Aesthetic Theming Engine</h1>
+      <p>Instant visual mood-matching mapping brand vibes to typography pairings, color harmonies, and layout rhythm.</p>
+      <div class="badge-bar">
+        <span class="badge badge-amber">4 Aesthetic Archetypes</span>
+        <span class="badge badge-amber">Typography Pairings</span>
+        <span class="badge badge-blue">Tailwind Tokens</span>
+        <span class="badge badge-blue">Zero Generic AI Looks</span>
+      </div>
+    </header>
+
+    <!-- Layman Box -->
+    <div class="layman-box">
+      <div class="layman-title">💡 In Plain English (Why do we need design tokens?)</div>
+      <p>When you ask basic AI to "make a website", it usually makes a boring generic blue page with standard fonts that screams "AI-made". Our design token engine fixes this:</p>
+      <ul>
+        <li>You tell the AI one word: <code>"premium"</code>, <code>"funky"</code>, <code>"minimal"</code>, or <code>"bold-tech"</code>.</li>
+        <li>The engine automatically loads matching font pairs, calculated color palettes, and container padding.</li>
+        <li>A luxury architectural firm instantly gets elegant serif fonts and champagne gold borders.</li>
+        <li>A streetwear fashion drop instantly gets thick black borders, neo-brutalist shadows, and neon colors.</li>
+      </ul>
+    </div>
+
+    <!-- 4 Archetypes Visual Grid -->
+    <div class="card">
+      <h2>🎨 The 4 Standardized Vibe Presets</h2>
+      <div class="vibe-grid">
+        <div class="vibe-card">
+          <div class="vibe-name" style="color: #fbbf24;">✨ Premium Editorial</div>
+          <div class="vibe-fonts">Cormorant Garamond + Plus Jakarta Sans</div>
+          <div class="vibe-desc">Deep obsidian blacks, champagne gold accents, wide letter spacing, high-end editorial feel.</div>
+        </div>
+
+        <div class="vibe-card">
+          <div class="vibe-name" style="color: #a3e635;">⚡ Funky Neo-Brutalist</div>
+          <div class="vibe-fonts">Space Grotesk + Space Mono</div>
+          <div class="vibe-desc">Hard offset drop shadows, electric lime, heavy 3px borders, tilted badge stickers.</div>
+        </div>
+
+        <div class="vibe-card">
+          <div class="vibe-name" style="color: #cbd5e1;">⚪ Minimal Clean</div>
+          <div class="vibe-fonts">Geist Sans + Inter</div>
+          <div class="vibe-desc">Neutral zinc grays, hairline borders, generous whitespace, pure Swiss aesthetic.</div>
+        </div>
+
+        <div class="vibe-card">
+          <div class="vibe-name" style="color: #38bdf8;">🔮 Bold Tech</div>
+          <div class="vibe-fonts">Plus Jakarta Sans + JetBrains Mono</div>
+          <div class="vibe-desc">Cosmic midnight navy, neon cyan glows, glassmorphism, developer-first look.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="card">
+      <h2>📐 Design Token Matrix</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Archetype</th>
+            <th>Heading Font</th>
+            <th>Accent Color</th>
+            <th>Border Style</th>
+            <th>Shadow Treatment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>premium</strong></td>
+            <td>Cormorant Garamond</td>
+            <td>Champagne Gold (<code>#C5A880</code>)</td>
+            <td>Hairline subtle gold</td>
+            <td>Soft ambient blur</td>
+          </tr>
+          <tr>
+            <td><strong>funky</strong></td>
+            <td>Space Grotesk</td>
+            <td>Electric Lime (<code>#84CC16</code>)</td>
+            <td>3px solid black/white</td>
+            <td>Hard offset <code>4px 4px 0px</code></td>
+          </tr>
+          <tr>
+            <td><strong>minimal</strong></td>
+            <td>Geist Sans</td>
+            <td>Pure White / Zinc (<code>#FAFAFA</code>)</td>
+            <td>Hairline zinc-800</td>
+            <td>No shadow (flat)</td>
+          </tr>
+          <tr>
+            <td><strong>bold-tech</strong></td>
+            <td>Plus Jakarta Sans</td>
+            <td>Neon Cyan (<code>#38BDF8</code>)</td>
+            <td>Cyan border with glow</td>
+            <td>Radial colored glow</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      Agency Microsite Engine &bull; Standardized Production Architecture &bull; <a href="../index.html" style="color: #38bdf8;">Return to Hub</a>
+    </footer>
+  </div>
+</body>
+</html>

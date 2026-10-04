@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Skill: build-static-landing - Agency Microsite Engine</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --code-bg: #030712;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+      padding: 0 1rem 4rem;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    header { padding: 2.5rem 0 1.5rem; border-bottom: 1px solid var(--card-border); margin-bottom: 2rem; }
+    .nav-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); text-decoration: none; font-size: 0.875rem; margin-bottom: 1rem; }
+    h1 { font-size: 2.2rem; font-weight: 800; background: linear-gradient(to right, #fff, #93c5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+    .layman-box { background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 2rem; }
+    .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+    h2 { font-size: 1.25rem; color: #fff; margin-bottom: 0.75rem; }
+    p, li { color: var(--text-muted); font-size: 0.95rem; }
+    ol { margin-left: 1.5rem; margin-bottom: 1rem; }
+    strong { color: #f8fafc; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../../../docs/index.html" class="nav-back">← Back to Documentation Hub</a>
+      <h1>Agent Skill: build-static-landing</h1>
+      <p>Automated execution workflow for single-page conversion landing sites.</p>
+    </header>
+
+    <div class="layman-box">
+      <h3 style="color: var(--accent); margin-bottom: 0.5rem;">💡 What does invoking this skill do?</h3>
+      <p>When you trigger <code>@build-static-landing</code> in Antigravity or Claude, the AI reads your <code>client-spec.json</code> and builds a complete, responsive 5-section landing page with working Google Sheet forms in minutes.</p>
+    </div>
+
+    <div class="card">
+      <h2>Workflow Phases</h2>
+      <ol>
+        <li><strong>Intake Parse:</strong> Reads client brand name, tagline, and chosen vibe.</li>
+        <li><strong>Token Application:</strong> Configures typography and Tailwind palettes.</li>
+        <li><strong>Content Segregation:</strong> Populates pure data files in <code>src/data/</code>.</li>
+        <li><strong>Page Assembly:</strong> Combines Navbar, Hero, FeatureGrid, ContactForm, and Footer.</li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>
