@@ -1,0 +1,136 @@
+Listed directory agency-microsite-engine
+Viewed README.md:1-88
+Viewed client-spec.json:1-45
+Viewed SKILL.md:1-35
+Listed directory .agents
+Listed directory rules
+Listed directory skills
+Listed directory src
+Listed directory data
+Listed directory app
+Viewed ClientSpecIntake.md:1-88
+Viewed SevenDaySprintPlaybook.md:1-77
+Viewed siteConfig.ts:1-27
+
+To create a new website using this repository’s autonomous skills and data architecture, you follow a **5-step workflow** designed around the [client-spec.json](file:///media/vishal-barai/New%20Volume/Doable-Internship/agency-microsite-engine/client-spec.json) intake file and the decoupled data contracts in [`src/data/`](file:///media/vishal-barai/New%20Volume/Doable-Internship/agency-microsite-engine/src/data).
+
+---
+
+### Step 1: Choose Your Website Archetype & Skill
+
+Select the archetype that best matches your client or project from [`.agents/skills/`](file:///media/vishal-barai/New%20Volume/Doable-Internship/agency-microsite-engine/.agents/skills):
+
+| Archetype Skill | Best For | Included Features |
+| :--- | :--- | :--- |
+| **`build-static-landing`** | Waitlists, SaaS launches, events | Fast single-page landing, 3-card feature grid, FAQ, lead capture form |
+| **`build-brand-gsap`** | Luxury brands, architecture, fashion | Lenis smooth scroll, GSAP ScrollTrigger pinned sections, editorial aesthetic |
+| **`build-real-estate`** | Property developments, luxury villas | Unit inventory grid, bedroom/budget filters, floorplan lightbox modal |
+| **`build-interactive-3d`** | Tech hardware, Web3, creative studios | React Three Fiber WebGL 3D hero canvas, 3D model viewer, particle effects |
+| **`build-portfolio-static`** | Agencies, designers, freelancers | Bento-grid project showcase, filterable case studies, bio highlights |
+| **`build-micro-ecommerce`** | Limited drops, boutique stores | Persistent Zustand cart drawer, WhatsApp direct checkout, Stripe session |
+| **`build-sanity-cms`** | Editorial sites, multi-page firms | Sanity v3 CMS integration, PortableText blogs, team directory |
+
+---
+
+### Step 2: Configure [client-spec.json](file:///media/vishal-barai/New%20Volume/Doable-Internship/agency-microsite-engine/client-spec.json)
+
+Update the root intake configuration file [client-spec.json](file:///media/vishal-barai/New%20Volume/Doable-Internship/agency-microsite-engine/client-spec.json) with your brand's details:
+
+```json
+{
+  "archetype": "brand-showcase",
+  "brand": {
+    "name": "Your Brand Name",
+    "industry": "e.g., Luxury Architecture & Real Estate",
+    "vibe": "premium", // "premium" | "tech" | "warm" | "minimal"
+    "palette": {
+      "primary": "#0F0F11",
+      "accent": "#C5A880",
+      "background": "dark"
+    },
+    "tagline": "One-sentence core value proposition.",
+    "logoUrl": "/placeholder/logo.svg"
+  },
+  "navigation": [
+    { "label": "Services", "href": "#services" },
+    { "label": "Projects", "href": "#projects" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "leadCapture": {
+    "destinations": ["google_sheets", "email"],
+    "fields": ["fullName", "email", "phone", "service", "message"]
+  },
+  "contentSummaries": {
+    "heroHeadline": "Main Headline for the Hero Section",
+    "heroSubheadline": "Supporting descriptive copy explaining the offering.",
+    "coreOfferings": [
+      {
+        "title": "Service 1",
+        "description": "Details about service 1."
+      },
+      {
+        "title": "Service 2",
+        "description": "Details about service 2."
+      }
+    ]
+  }
+}
+```
+
+---
+
+### Step 3: Trigger the AI Agent Skill
+
+In Antigravity chat, run a prompt targeting your chosen skill:
+
+> *"Read [client-spec.json](file:///media/vishal-barai/New%20Volume/Doable-Internship/agency-microsite-engine/client-spec.json) and scaffold the website using the `build-brand-gsap` (or your chosen) skill."*
+
+The AI agent will automatically:
+1. Parse your brand spec and apply aesthetic design tokens ([design-tokens.md](file:///media/vishal-barai/New%20Volume/Doable-Internship/agency-microsite-engine/.agents/rules/design-tokens.md)).
+2. Generate typed content files under [`src/data/`](file:///media/vishal-barai/New%20Volume/Doable-Internship/agency-microsite-engine/src/data).
+3. Assemble the layout in [`app/(site)/page.tsx`](file:///media/vishal-barai/New%20Volume/Doable-Internship/agency-microsite-engine/app/(site)/page.tsx).
+4. Wire form validation and multi-destination lead ingestion in [`app/actions/submitContactForm.ts`](file:///media/vishal-barai/New%20Volume/Doable-Internship/agency-microsite-engine/app/actions/submitContactForm.ts).
+
+---
+
+### Step 4: Fine-Tune Content in Decoupled Data Files
+
+Because UI components are decoupled from content, you do not need to edit complex React or Tailwind JSX. Customize copy, imagery, and links directly in:
+- [src/data/siteConfig.ts](file:///media/vishal-barai/New%20Volume/Doable-Internship/agency-microsite-engine/src/data/siteConfig.ts) – Global metadata, palette, socials, contact details.
+- [src/data/hero.ts](file:///media/vishal-barai/New%20Volume/Doable-Internship/agency-microsite-engine/src/data/hero.ts) – Hero headline, badges, CTAs, and background images.
+- [src/data/offerings.ts](file:///media/vishal-barai/New%20Volume/Doable-Internship/agency-microsite-engine/src/data/offerings.ts) – Core features/services with icons.
+- [src/data/faqs.ts](file:///media/vishal-barai/New%20Volume/Doable-Internship/agency-microsite-engine/src/data/faqs.ts) – Accordion FAQ items.
+- [src/data/testimonials.ts](file:///media/vishal-barai/New%20Volume/Doable-Internship/agency-microsite-engine/src/data/testimonials.ts) – Client reviews and social proof.
+- [src/data/units.ts](file:///media/vishal-barai/New%20Volume/Doable-Internship/agency-microsite-engine/src/data/units.ts) – Inventory/properties (if real estate archetype).
+
+---
+
+### Step 5: Configure Credentials & Run Locally
+
+1. **Set environment variables**:
+   ```bash
+   cp .env.example .env.local
+   ```
+   Add your keys in `.env.local`:
+   - `GOOGLE_SHEETS_WEBHOOK_URL` (for Google Sheet auto-logging)
+   - `RESEND_API_KEY` & `CONTACT_NOTIFICATION_EMAIL` (for instant email alerts)
+
+2. **Launch the development server**:
+   ```bash
+   npm run dev
+   ```
+   Visit [http://localhost:3000](http://localhost:3000) to inspect the website.
+
+3. **Verify production build**:
+   ```bash
+   npm run build
+   ```
+
+---
+
+### Ready to build one now?
+Tell me:
+1. What kind of business or website are you building?
+2. Which archetype above fits your vision?
+
+I can populate [client-spec.json](file:///media/vishal-barai/New%20Volume/Doable-Internship/agency-microsite-engine/client-spec.json) and scaffold the complete site for you right away.
