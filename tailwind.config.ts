@@ -49,6 +49,15 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))"
         },
+        brand: {
+          DEFAULT: "#265CA0",
+          dark: "#183C68",
+          darker: "#0F2644",
+          light: "#3A75C4",
+          tint: "#EBF3FC",
+          ice: "#F2F7FD",
+          subtle: "rgba(38, 92, 160, 0.12)"
+        },
         gold: {
           DEFAULT: "#9B802E",
           light: "#C5A880",
@@ -66,8 +75,10 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)"
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "sans-serif"],
-        serif: ["var(--font-serif)", "serif"],
+        sans: ["var(--font-sans)", "'Plus Jakarta Sans'", "sans-serif"],
+        serif: ["var(--font-heading)", "'Cormorant Garamond'", "Georgia", "serif"],
+        heading: ["var(--font-heading)", "'Cormorant Garamond'", "Georgia", "serif"],
+        editorial: ["'Cormorant Garamond'", "Georgia", "serif"],
         mono: ["var(--font-mono)", "monospace"]
       },
       boxShadow: {

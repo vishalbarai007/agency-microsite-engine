@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Real Estate & Architectural Showcase - Agency Microsite Engine</title>
+  <title>Luxury Real Estate Landing Page Architecture & 2-Day Turnaround - Agency Microsite Engine</title>
   <style>
     :root {
       --bg: #090d16;
@@ -14,6 +14,7 @@
       --accent: #eab308;
       --accent-glow: rgba(234, 179, 8, 0.15);
       --code-bg: #030712;
+      --blue-accent: #38bdf8;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -23,7 +24,7 @@
       line-height: 1.65;
       padding: 0 1rem 4rem;
     }
-    .container { max-width: 960px; margin: 0 auto; }
+    .container { max-width: 980px; margin: 0 auto; }
     header {
       padding: 2.5rem 0 1.5rem;
       border-bottom: 1px solid var(--card-border);
@@ -33,12 +34,13 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      color: #38bdf8;
+      color: var(--blue-accent);
       text-decoration: none;
       font-size: 0.875rem;
       font-weight: 500;
       margin-bottom: 1rem;
     }
+    .nav-back:hover { text-decoration: underline; }
     h1 {
       font-size: 2.25rem;
       font-weight: 800;
@@ -48,34 +50,19 @@
       -webkit-text-fill-color: transparent;
       margin-bottom: 0.75rem;
     }
-    .badge-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+    .subtitle { color: var(--text-muted); font-size: 1.125rem; }
     .badge {
-      font-size: 0.75rem;
-      font-weight: 600;
+      display: inline-block;
       padding: 0.25rem 0.65rem;
       border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-    }
-    .badge-gold { background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3); }
-    .badge-blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
-
-    .layman-box {
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(113, 63, 18, 0.2));
-      border: 1px solid rgba(234, 179, 8, 0.3);
-      box-shadow: 0 0 25px var(--accent-glow);
-      border-radius: 0.75rem;
-      padding: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-    .layman-title {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      background: var(--accent-glow);
       color: var(--accent);
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
+      border: 1px solid rgba(234, 179, 8, 0.3);
+      margin-bottom: 1rem;
     }
     .card {
       background-color: var(--card-bg);
@@ -84,83 +71,229 @@
       padding: 1.75rem;
       margin-bottom: 2rem;
     }
-    h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; color: #f1f5f9; }
-    p, li { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
-    ul { margin-left: 1.5rem; margin-bottom: 1rem; }
-    li { margin-bottom: 0.35rem; }
-    strong { color: #f8fafc; }
-
-    pre {
-      background-color: var(--code-bg);
+    .card h2 {
+      font-size: 1.35rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    p { margin-bottom: 1rem; color: #cbd5e1; font-size: 0.95rem; }
+    .timeline {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    @media (max-width: 768px) { .timeline { grid-template-columns: 1fr; } }
+    .day-box {
+      background: #0d131f;
       border: 1px solid var(--card-border);
       border-radius: 0.5rem;
       padding: 1.25rem;
-      overflow-x: auto;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 0.85rem;
-      color: #e2e8f0;
-      line-height: 1.6;
-      margin: 1rem 0;
     }
-    code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 0.85em;
-      background: rgba(30, 41, 59, 0.6);
-      padding: 0.15rem 0.4rem;
-      border-radius: 0.25rem;
+    .day-title {
+      font-weight: 700;
       color: #fde047;
+      font-size: 1.05rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-    pre code { background: transparent; padding: 0; color: inherit; }
-
-    footer {
-      text-align: center;
-      font-size: 0.8rem;
+    ul { list-style: none; margin-bottom: 1rem; }
+    li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
       color: var(--text-muted);
-      margin-top: 4rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--card-border);
+      font-size: 0.9rem;
+    }
+    li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #38bdf8;
+      font-weight: bold;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.875rem;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--card-border);
+    }
+    th { color: #fde047; font-weight: 600; background: rgba(0,0,0,0.2); }
+    td { color: #cbd5e1; }
+    .ref-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    @media (max-width: 640px) { .ref-grid { grid-template-columns: 1fr; } }
+    .ref-card {
+      background: #030712;
+      border: 1px solid var(--card-border);
+      border-radius: 0.5rem;
+      padding: 1rem;
+    }
+    .ref-card a {
+      color: #38bdf8;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    .ref-card a:hover { text-decoration: underline; }
+    .ref-card p {
+      margin-top: 0.5rem;
+      font-size: 0.825rem;
+      color: #94a3b8;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <a href="../index.html" class="nav-back">← Back to Documentation Hub</a>
-      <h1>Real Estate &amp; Architectural Showcase</h1>
-      <p>Luxury property inventory filters, architectural floor plan zoom lightboxes, and high-converting private viewing inquiry drawers.</p>
-      <div class="badge-bar">
-        <span class="badge badge-gold">Real Estate Archetype</span>
-        <span class="badge badge-gold">Floor Plan Lightbox</span>
-        <span class="badge badge-blue">Embla Carousel</span>
-        <span class="badge badge-blue">Radix Dialog</span>
-      </div>
+      <a href="../index.html" class="nav-back">&larr; Documentation Hub</a>
+      <span class="badge">Agency Architecture Spec</span>
+      <h1>Luxury Real Estate Landing Page Architecture</h1>
+      <p class="subtitle">Autonomous AI agent skill & 2-day delivery framework for high-converting residential developments, towers, and villas.</p>
     </header>
 
-    <!-- Layman Box -->
-    <div class="layman-box">
-      <div class="layman-title">💡 In Plain English (Why this sells like hotcakes)</div>
-      <p>Luxury property brokers and developers will happily pay $2,000+ for a 5-day website launch for a new high-rise tower or seaside villa project:</p>
-      <ul>
-        <li>Buyers can filter apartments by <strong>2BHK, 3BHK, Penthouses, or Villas</strong>.</li>
-        <li>Clicking <strong>"View Floor Plan"</strong> pops up a crystal-clear architectural blueprint modal that they can pinch-to-zoom on their phone.</li>
-        <li>A swipeable photo gallery lets them explore interior master bedrooms, designer kitchens, and pool areas.</li>
-        <li>A pinned <strong>"Book Private Tour"</strong> button is always visible, driving instant leads straight to the realtor's WhatsApp or Google Sheet.</li>
-      </ul>
-    </div>
-
-    <!-- Component Checklist -->
     <div class="card">
-      <h2>🏢 Modules Included</h2>
-      <ul>
-        <li><strong>Decoupled <code>units.ts</code>:</strong> The realtor can mark units as "Available", "Reserved", or "Sold Out" in 5 seconds.</li>
-        <li><strong>FloorPlanModal:</strong> Fully accessible dialog modal using Radix UI with zero keyboard trap issues.</li>
-        <li><strong>Embla Carousel:</strong> Lightweight, frictionless touch sliding with GPU acceleration.</li>
-      </ul>
+      <h2>⚡ The 2-Day Agency Delivery Framework</h2>
+      <p>Deliver enterprise-grade luxury landing pages with 80%+ profit margins by adhering to the strictly decoupled 2-day workflow:</p>
+      <div class="timeline">
+        <div class="day-box">
+          <div class="day-title">🗓️ Day 1: Scaffold V1 & Staging Preview</div>
+          <ul>
+            <li>Extract dynamic theme colors directly from company/project logo.</li>
+            <li>Configure project spec & RERA details in <code>client-spec.json</code>.</li>
+            <li>Populate decoupled contracts: <code>src/data/units.ts</code>, <code>amenities.ts</code>, <code>projects.ts</code>.</li>
+            <li>Scaffold 10 core sections + 3 persistent interactive modals.</li>
+            <li>Deploy live V1 staging preview to Vercel/Netlify for client review.</li>
+          </ul>
+        </div>
+        <div class="day-box">
+          <div class="day-title">🚀 Day 2: Revisions, QA & Final Launch</div>
+          <ul>
+            <li>Apply client feedback strictly via <code>src/data/*.ts</code> (zero JSX alterations).</li>
+            <li>Verify Google Sheets spreadsheet webhook & Resend email lead dispatch.</li>
+            <li>Audit smooth scroll (Lenis/GSAP), image zoom, and mobile responsiveness.</li>
+            <li>Ensure MahaRERA / RERA certificate & QR code compliance.</li>
+            <li>Connect custom client domain and hand over production build.</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <footer>
-      Agency Microsite Engine &bull; Standardized Production Architecture &bull; <a href="../index.html" style="color: #38bdf8;">Return to Hub</a>
-    </footer>
+    <div class="card">
+      <h2>🏛️ Standard 10-Section Flow & Component Suite</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Component</th>
+            <th>Function & Key Interactions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01</td>
+            <td><code>LuxuryNavbar.tsx</code></td>
+            <td>Glassmorphic sticky header, company logo, anchor navigation, phone dialer, VIP tour booking CTA.</td>
+          </tr>
+          <tr>
+            <td>02</td>
+            <td><code>HeroParallax.tsx</code></td>
+            <td>Aperture Carousel or video hero, room switcher thumbnails, "Book Tour", "Download Brochure", "Watch Film".</td>
+          </tr>
+          <tr>
+            <td>03</td>
+            <td><code>About.tsx</code></td>
+            <td>Asymmetric editorial layout, luxury serif headlines with italic accents, key project metrics, hover scale render.</td>
+          </tr>
+          <tr>
+            <td>04</td>
+            <td><code>AboutHumDeveloper.tsx</code></td>
+            <td>Developer credibility, sqft delivered, legacy track record, MahaRERA registration number and QR code.</td>
+          </tr>
+          <tr>
+            <td>05</td>
+            <td><code>ImageGallery.tsx</code></td>
+            <td>Master GSAP Timeline: pinned title scale &rarr; center image full-screen expand &rarr; horizontal categorized scroll + zoom.</td>
+          </tr>
+          <tr>
+            <td>06</td>
+            <td><code>AmenityScroller.tsx</code></td>
+            <td>Curated lifestyle amenities (Pool, Sky Lounge, Gym, Zen Garden) with <code>AmenityDetailModal.tsx</code>.</td>
+          </tr>
+          <tr>
+            <td>07</td>
+            <td><code>FloorPlanScrubber.tsx</code></td>
+            <td>Interactive typology selector (1BHK/2BHK/3BHK/Penthouse), carpet area specs, and high-res blueprint zoom modal.</td>
+          </tr>
+          <tr>
+            <td>08</td>
+            <td><code>LocationRadar.tsx</code></td>
+            <td>Strategic connectivity matrix with travel times (Metro 3m, Airport 25m, Highway 5m) and custom styled map.</td>
+          </tr>
+          <tr>
+            <td>09</td>
+            <td><code>Contact.tsx</code></td>
+            <td>VIP Sales Gallery suite, interactive appointment scheduler, WhatsApp direct chat, sales hotline.</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td><code>Footer.tsx</code></td>
+            <td>Regulatory disclaimers, MahaRERA QR code, developer social links, and privacy policy.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>🎨 Aesthetic Principles & Logo-Derived Theming</h2>
+      <p><strong>1. Minimal Content, Rich Imagery Rule (75/25 Ratio):</strong> Limit text to punchy editorial statements and metadata badges. Let the architecture, dusk lighting, and macro material textures (Italian marble, raw stone, bronze) do the selling.</p>
+      <p><strong>2. Editorial Typography & Italic Accents:</strong> Pair a luxury serif heading (<em>Cormorant Garamond</em> or <em>Playfair Display</em>) with modern sans body (<em>Plus Jakarta Sans</em>, <em>Inter</em>). Style 1-2 emotive words per headline in an elegant, lighter italic serif.</p>
+      <p><strong>3. Company Logo Theming:</strong> Derive primary and secondary accents from the client's provided logo (e.g. Sapphire Blue, Tuscan Terracotta, Gold/Noir, or Minimalist Blanc & Noir) while retaining universal luxury denominators: hairline borders, image hover zoom, and smooth inertia scroll.</p>
+    </div>
+
+    <div class="card">
+      <h2>🌐 Live Production Benchmark References</h2>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <a href="https://www.mejuma-tuscany.com/" target="_blank">Mejuma Tuscany &rarr;</a>
+          <p>Tuscan luxury estate storytelling, warm earthy tones (#38352C, #F1F1F1), line reveal animations, architectural elegance.</p>
+        </div>
+        <div class="ref-card">
+          <a href="https://azimuteresidencial.com.br/" target="_blank">Azimute Residencial &rarr;</a>
+          <p>Modern coastal residential development, high-impact looping video background, clean typography, interactive floorplans.</p>
+        </div>
+        <div class="ref-card">
+          <a href="https://mrcresidencesbocaraton.com/" target="_blank">Mr. C Residences (Super Minimal) &rarr;</a>
+          <p>Ultra-minimalist luxury hotel residences, maximum whitespace, high-impact photography, refined serif/italic accents.</p>
+        </div>
+        <div class="ref-card">
+          <a href="https://sobha-privy-collection.com/" target="_blank">Sobha Privy Collection &rarr;</a>
+          <p>Dubai ultra-luxury waterfront towers, dark noir & warm gold palette, full-bleed interactive gallery, digital brochure gate.</p>
+        </div>
+        <div class="ref-card">
+          <a href="https://newhum-one.vercel.app/" target="_blank">HUM Emerald Heights &rarr;</a>
+          <p>Proven production benchmark: aperture carousel, room switchers, master GSAP scroll gallery, floorplan scrubber, location radar.</p>
+        </div>
+        <div class="ref-card">
+          <a href="https://hum-sapphire-rho.vercel.app/" target="_blank">HUM Sapphire &rarr;</a>
+          <p>Proven production benchmark: high-converting VIP lead capture, MahaRERA QR integration, responsive mobile experience.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 </html>
