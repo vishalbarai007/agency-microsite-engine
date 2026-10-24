@@ -34,6 +34,7 @@ Every architectural module has a detailed technical specification (`.md`) and a 
 | **Sanity Headless CMS** | [SanityCMSIntegration.md](./docs/functions/SanityCMSIntegration.md) | [SanityCMSIntegration.html](./docs/functions/SanityCMSIntegration.html) | Sanity v3, GROQ, On-Demand ISR |
 | **Scroll & Cinematic Motion**| [ScrollAndAnimations.md](./docs/functions/ScrollAndAnimations.md) | [ScrollAndAnimations.html](./docs/functions/ScrollAndAnimations.html) | GSAP, ScrollTrigger, Lenis |
 | **3D Interactive WebGL** | [ThreeJsInteraction.md](./docs/functions/ThreeJsInteraction.md) | [ThreeJsInteraction.html](./docs/functions/ThreeJsInteraction.html) | Three.js, React Three Fiber, Drei |
+| **Sports Franchise Showcase** | [SportsFranchiseShowcase.md](./docs/functions/SportsFranchiseShowcase.md) | [Open Spec](./docs/functions/SportsFranchiseShowcase.md) | GSAP, Three.js 3D, Clip-Path Stack |
 | **Real Estate Showcase** | [RealEstateShowcase.md](./docs/functions/RealEstateShowcase.md) | [RealEstateShowcase.html](./docs/functions/RealEstateShowcase.html) | Radix Dialog, Floor Plan Lightbox |
 | **Micro-Ecommerce & Cart** | [MicroEcommerce.md](./docs/functions/MicroEcommerce.md) | [MicroEcommerce.html](./docs/functions/MicroEcommerce.html) | Zustand, WhatsApp Checkout, Stripe |
 | **7-Day Sprint Playbook** | [SevenDaySprintPlaybook.md](./docs/functions/SevenDaySprintPlaybook.md) | [SevenDaySprintPlaybook.html](./docs/functions/SevenDaySprintPlaybook.html) | Agency SOP, 80% Margin Framework |
@@ -44,6 +45,7 @@ Every architectural module has a detailed technical specification (`.md`) and a 
 
 Trigger these skills inside Google Antigravity or Claude Code to scaffold complete archetypes:
 
+- `@build-sports-franchise`: Elite sports franchise, athletic club, or motorsport racing microsite with GSAP pinned depth zoom, Cadillac F1 clip-path player stack, 3D interactive model, and cascading news bento.
 - `@build-static-landing`: High-speed single-page conversion landing page for waitlists and launches.
 - `@build-brand-gsap`: Luxury brand showcase with Lenis smooth scroll and GSAP pinned narratives.
 - `@build-interactive-3d`: 3D canvas hero and rotatable GLTF model viewer using React Three Fiber.
